@@ -1,10 +1,14 @@
+input{
+  border: none;
+  overflow: unset;
+}
 .dndflow {
   margin: 3px;
   flex-direction: column;
   display: flex;
   flex-grow: 1;
   height: 97%;
-  border: 2px solid #3498db;
+  border: 2px solid #7989EF;
   border-radius: 10px; 
 }
 
@@ -18,17 +22,42 @@
 .dndflow aside .description {
   margin-bottom: 10px;
 }
+ 
+.node-text-input {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 0px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: montserrat;
+  color: #2C3E50;
+  font-size: 13px;
+}
+
+.node-text-input:focus{
+  border: 2px solid #7989EF !important;
+}
 
 .dndflow .dndnode {
-  height: 20px;
+  height: 50px;
+  width: 100px;
   padding: 4px;
-  border: 1px solid #1a192b;
-  border-radius: 2px;
-  margin-bottom: 10px;
+  border: 1px solid #7989EF;
+  color: #7989EF;
+  border-radius: 5px;
+  margin: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: grab;
+}
+
+.message-node{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .dndflow .dndnode.input {
@@ -42,7 +71,11 @@
 .dndflow .reactflow-wrapper {
   flex-grow: 1;
   height: 100%;
-  border-right: 2px solid #3498db;
+  border-right: 2px solid #7989EF;
+}
+
+.message-node{
+  
 }
 
 .dndflow .selectall {
@@ -51,10 +84,11 @@
 
 .text-updater-node {
   height: 50px;
-  border: 1px solid black;
-  padding: 5px;
+  border: 2px solid #ccc;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   border-radius: 5px;
   background: white;
+  min-width: 200px;
 }
 
 .text-updater-node label {
@@ -64,9 +98,49 @@
 }
 
 .text-updater-node-selected{
-  border: 1px solid #3498db;
+  border: 1px solid #7989EF;
 }
 
+.save-btn {
+  margin: 12px auto;
+  width: 220px;
+  border-radius: 10px;
+  border: 1px solid #7989EF;
+  box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #7989EF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.15385;
+  outline: none;
+  padding: 16px .8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+.button-8:hover,
+.button-8:focus {
+  background-color: #b3d3ea;
+  color: #2c5777;
+}
+
+.button-8:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+.button-8:active {
+  background-color: #a0c7e4;
+  box-shadow: none;
+  color: #2c5777;
+}
 
 @media screen and (min-width: 768px) {
   .dndflow {

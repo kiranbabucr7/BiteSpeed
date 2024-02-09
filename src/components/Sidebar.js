@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { ReactComponent as MessageSVG } from '../icons/message-circle-lines-alt-svgrepo-com.svg';
+import "../index.css"
 export default () => {
   const onDragStart = (event, nodeType) => {
     event.dataTransfer.setData('application/reactflow', nodeType);
@@ -9,7 +10,10 @@ export default () => {
   const nodes = [
     {children:( 
       <div className="dndnode" onDragStart={(event) => onDragStart(event, 'textUpdater')} draggable>
-      Message Node
+        <div className='message-node'>
+          <MessageSVG style={{width:"16px", height:"16px"}} fill='#7989EF'/>
+          <p style={{margin:'2px'}}>Message</p>
+        </div>
       </div>),
       key:1
     }
@@ -17,7 +21,6 @@ export default () => {
 
   return (
     <div>
-      <div className="description">You can drag these nodes to the pane on the left.</div>
       {nodes.map(node => <div key = {node.key}>{node.children}</div>)}
     </div>
   );

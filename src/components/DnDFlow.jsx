@@ -13,6 +13,7 @@ import Sidebar from './Sidebar';
 import '../index.css';
 import { nodeTypes } from '../utils';
 import NodeDataEditor from './NodeDataEditor';
+import { cloneDeep } from 'lodash';
 
 const initialNodes = [];
 
@@ -90,6 +91,15 @@ const DnDFlow = () => {
 
   const isAnyNodeSelected = nodes.some(node => node.selected)
 
+  const onUnSelectNode = () => {
+    const currentNodes = cloneDeep(nodes)
+    const updatedNodes = currentNodes.map(node => ({
+      ...node,
+      selected: false
+    }))
+    setNodes(updatedNodes)
+  }
+
   return (
     <div className="dndflow">
       <ReactFlowProvider>
@@ -110,13 +120,14 @@ const DnDFlow = () => {
           </ReactFlow>
         </div>
         <div style={{display:'flex', flexDirection:'column', minWidth: "20%"}}>
-          <button onClick={onSave}>save changes</button>
+          <button className='save-btn' onClick={onSave}>save changes</button>
           {!isAnyNodeSelected
             ? <Sidebar />
             : <NodeDataEditor 
                 nodes={nodes}
                 setNodes={setNodes}
                 onSave={onSave}
+                onUnSelectNode={onUnSelectNode}
               />
           }
         </div>
