@@ -65,9 +65,21 @@ const DnDFlow = () => {
     },
     [reactFlowInstance,nodes],
   );
+  
+  const isValidFlow = () => {
+
+  }
+
+  const onSave = () => {
+    if(!isValidFlow){
+      alert('not valid')
+      return
+    }
+    //do what we want to do on save
+  }
 
   const isAnyNodeSelected = nodes.some(node => node.selected)
-  console.log(nodes,isAnyNodeSelected)
+
   return (
     <div className="dndflow">
       <ReactFlowProvider>
@@ -87,13 +99,17 @@ const DnDFlow = () => {
             <Controls />
           </ReactFlow>
         </div>
-        {!isAnyNodeSelected
-          ? <Sidebar />
-          : <NodeDataEditor 
-              nodes={nodes}
-              setNodes={setNodes}
-            />
-        }
+        <div style={{display:'flex', flexDirection:'column'}}>
+          <button onClick={onSave}>save changes</button>
+          {!isAnyNodeSelected
+            ? <Sidebar />
+            : <NodeDataEditor 
+                nodes={nodes}
+                setNodes={setNodes}
+                onSave={onSave}
+              />
+          }
+        </div>
       </ReactFlowProvider>
     </div>
   );

@@ -7,15 +7,18 @@ export default () => {
   };
 
   const nodes = [
-    <div className="dndnode" onDragStart={(event) => onDragStart(event, 'textUpdater')} draggable>
+    {children:( 
+      <div className="dndnode" onDragStart={(event) => onDragStart(event, 'textUpdater')} draggable>
       Message Node
-    </div>
+      </div>),
+      key:1
+    }
   ]
 
   return (
-    <aside>
+    <div>
       <div className="description">You can drag these nodes to the pane on the left.</div>
-      {nodes.map(node => node)}
-    </aside>
+      {nodes.map(node => <div key = {node.key}>{node.children}</div>)}
+    </div>
   );
 };
