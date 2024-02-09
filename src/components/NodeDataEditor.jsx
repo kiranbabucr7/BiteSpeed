@@ -22,11 +22,13 @@ export default function NodeDataEditor(props) {
   }
   return (
     <div style={{}}>
-      <div style={{borderTop: '1px solid #ccc', padding: "8px"}}>
-        <BackArrowSVG style={{width:'20px', height:'20px'}} onClick={onUnSelectNode}/>
-        <p style={{textAlign:'center'}}>Message</p>
-        <label style={{color: 'grey', display: 'block'}}>Text</label>
-        <input className='node-text-input' style={{marginTop:"12px"}} value={selectedNode.data.text} onChange={onChange}/>
+      <div style={{borderTop: '1px solid #ccc', padding: "12px", position:'relative'}}>
+        <BackArrowSVG style={{width:'20px', height:'20px', position:'absolute'}} onClick={onUnSelectNode}/>
+        <p style={{textAlign:'center', margin:'0px'}}>Message</p>
+        <div style={{marginTop:'16px'}}> 
+          <label style={{color: 'grey', display: 'block'}}>Text</label>
+          <input className='node-text-input' style={{marginTop:"12px"}} value={selectedNode.data.text} onChange={onChange}/>
+        </div>
       </div>
     </div>
   )
