@@ -86,6 +86,7 @@ const DnDFlow = () => {
       alert('not valid')
       return
     }
+    alert('Saved Flow')
     //do what we want to do on save
   }
 
