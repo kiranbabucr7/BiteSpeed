@@ -12,6 +12,7 @@ import Sidebar from './Sidebar';
 
 import '../index.css';
 import { nodeTypes } from '../utils';
+import NodeDataEditor from './NodeDataEditor';
 
 const initialNodes = [];
 
@@ -57,14 +58,16 @@ const DnDFlow = () => {
         id: getId(),
         type,
         position,
-        data: { label: `${type} Message` },
+        data: { text: `Test Message ${nodes.length+1}` },
       };
 
       setNodes((nds) => nds.concat(newNode));
     },
-    [reactFlowInstance],
+    [reactFlowInstance,nodes],
   );
 
+  const isAnyNodeSelected = nodes.some(node => node.selected)
+  console.log(nodes,isAnyNodeSelected)
   return (
     <div className="dndflow">
       <ReactFlowProvider>
@@ -84,7 +87,13 @@ const DnDFlow = () => {
             <Controls />
           </ReactFlow>
         </div>
-        <Sidebar />
+        {!isAnyNodeSelected
+          ? <Sidebar />
+          : <NodeDataEditor 
+              nodes={nodes}
+              setNodes={setNodes}
+            />
+        }
       </ReactFlowProvider>
     </div>
   );

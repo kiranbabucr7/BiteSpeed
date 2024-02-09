@@ -11,8 +11,7 @@ function TextUpdaterNode({ data, isConnectable, selected }) {
     <div className={`text-updater-node ${selected? 'text-updater-node-selected' : ''}`}>
       <Handle type="target" position={Position.Left} isConnectable={isConnectable} />
       <div>
-        <label htmlFor="text">Text:</label>
-        <input id="text" name="text" onChange={onChange} className="nodrag" />
+        <p>{data.text}</p>
       </div>
       <Handle type="source" position={Position.Right} id="b" isConnectable={isConnectable} />
     </div>
