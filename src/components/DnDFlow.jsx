@@ -67,11 +67,21 @@ const DnDFlow = () => {
   );
   
   const isValidFlow = () => {
-
+    const nodesWithoutEdges = [];
+      nodes.forEach((node) => {
+        const connectedEdges = edges.filter((edge) => 
+          edge.source === node.id 
+          || edge.target === node.id
+        );
+        if (connectedEdges.length === 0) {
+          nodesWithoutEdges.push(node.id);
+        }
+      });
+    return !Boolean(nodesWithoutEdges.length);
   }
 
   const onSave = () => {
-    if(!isValidFlow){
+    if(!isValidFlow()){
       alert('not valid')
       return
     }
@@ -99,7 +109,7 @@ const DnDFlow = () => {
             <Controls />
           </ReactFlow>
         </div>
-        <div style={{display:'flex', flexDirection:'column'}}>
+        <div style={{display:'flex', flexDirection:'column', minWidth: "20%"}}>
           <button onClick={onSave}>save changes</button>
           {!isAnyNodeSelected
             ? <Sidebar />
