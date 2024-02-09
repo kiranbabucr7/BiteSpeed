@@ -62,6 +62,10 @@
   font-size: 12px;
 }
 
+.text-updater-node-selected{
+  border: 1px solid #3498db;
+}
+
 
 @media screen and (min-width: 768px) {
   .dndflow {
