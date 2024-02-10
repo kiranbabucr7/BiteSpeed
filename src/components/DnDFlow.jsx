@@ -83,10 +83,10 @@ const DnDFlow = () => {
 
   const onSave = () => {
     if(!isValidFlow()){
-      alert('not valid')
+      alert('Cannot Save Flow')
       return
     }
-    alert('Saved Flow')
+    alert('Flow Saved')
     //do what we want to do on save
   }
 
